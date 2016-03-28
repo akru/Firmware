@@ -2,6 +2,7 @@
 
 #include <px4_posix.h>
 #include <controllib/uorb/blocks.hpp>
+#include <commander/commander_helper.h>
 
 using namespace control;
 
@@ -17,10 +18,12 @@ public:
 	{
 		_attPoll.fd = _att.getHandle();
 		_attPoll.events = POLLIN;
+
+        led_init();
+        rgbled_set_mode(RGBLED_MODE_ON);
 	}
 	void update();
 private:
-	enum {CH_LEFT, CH_RIGHT};
 	BlockPI th2v;
 	BlockP q2v;
 	px4_pollfd_struct_t _attPoll;

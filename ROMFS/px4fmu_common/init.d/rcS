@@ -316,7 +316,7 @@ then
 	sh /etc/init.d/rc.sensors
 
 	# Needs to be this early for in-air-restarts
-	commander start
+	#commander start
 
 	#
 	# Start primary output

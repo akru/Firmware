@@ -136,6 +136,8 @@ int segway_main(int argc, char *argv[])
 	exit(1);
 }
 
+static BlockSegwayController *autopilot = nullptr;
+
 int segway_thread_main(int argc, char *argv[])
 {
 
@@ -143,12 +145,13 @@ int segway_thread_main(int argc, char *argv[])
 
 	using namespace control;
 
-	BlockSegwayController autopilot;
+    if (autopilot == nullptr)
+        autopilot = new BlockSegwayController;
 
 	thread_running = true;
 
 	while (!thread_should_exit) {
-		autopilot.update();
+		autopilot->update();
 	}
 
 	warnx("exiting.");

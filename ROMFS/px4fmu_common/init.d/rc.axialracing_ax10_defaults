@@ -16,11 +16,11 @@ set PWM_RATE 50
 # PWM default value for "disarmed" mode
 # this centers the steering and throttle, which means no motion
 # for a rover
-set PWM_DISARMED 1500
+set PWM_DISARMED 1450
 
 # PWM range
-set PWM_MIN 1200
-set PWM_MAX 1800
+set PWM_MIN 1000
+set PWM_MAX 1900
 
 # Enable servo output on pins 3 and 4 (steering and thrust)
 # but also include 1+2 as they form together one output group

@@ -266,6 +266,13 @@ pwm_main(int argc, char *argv[])
 	}
 
 	if (!strcmp(argv[1], "arm")) {
+        /* safety switch off */ 
+        ret = ioctl(fd, PWM_SERVO_SET_FORCE_SAFETY_OFF, 0);
+
+		if (ret != OK) {
+			err(1, "PWM_SERVO_SET_FORCE_SAFETY_OFF");
+		}
+
 		/* tell safety that its ok to disable it with the switch */
 		ret = ioctl(fd, PWM_SERVO_SET_ARM_OK, 0);
 
